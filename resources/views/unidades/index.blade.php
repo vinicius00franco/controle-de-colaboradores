@@ -1,4 +1,6 @@
 <x-layout title="Unidades da Empresa">
+    <a href="{{ route('unidades.create') }}" class="btn btn-primary mb-2">Criar Unidade</a>
+
     <div class="container">
         <table class="table">
             <thead>
@@ -24,8 +26,6 @@
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Deletar</button>
-
-                                    
                                 </form>
                             </div>
                         </td>

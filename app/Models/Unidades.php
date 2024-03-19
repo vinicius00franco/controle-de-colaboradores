@@ -9,9 +9,9 @@ class Unidades extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nome_fantasia','razao_social','cnpj'];
+    protected $fillable = ['nome_fantasia', 'razao_social', 'cnpj'];
 
-    public function colaborador()
+    public function colaboradores()
     {
         return $this->hasMany(Colaboradores::class);
     }

@@ -9,16 +9,16 @@ class Colaboradores extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nome', 'cpf', 'email', 'unidade_id'];
+    protected $fillable = ['unidade_id', 'nome', 'cpf', 'email'];
 
-    public function unidade()
+    public function unidades()
     {
         return $this->belongsTo(Unidades::class);
     }
 
     public function cargos()
     {
-        // recuperar na tabela a coluna de desempenho
-        return $this->belongsToMany(Cargos::class, 'cargo_colaborador')->withPivot('nota_desempenho');
+        return $this->belongsToMany(Cargos::class, 'cargo_colaborador')
+                    ->withPivot('nota_desempenho');
     }
 }

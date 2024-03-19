@@ -13,14 +13,13 @@ class CreateCargoColaboradorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('cargo__colaboradors', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('cargo_colaboradors', function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger('cargo_id');
+            $table->foreign('cargo_id')->references('id')->on('cargos');
             $table->unsignedBigInteger('colaborador_id');
-            $table->foreign('cargo_id')->references('id')->on('cargos')->onDelete('cascade');
-            $table->foreign('colaborador_id')->references('id')->on('colaboradores')->onDelete('cascade');
-            $table->unsignedTinyInteger('nota_desempenho')->nullable();
-            $table->timestamps();
+            $table->foreign('colaborador_id')->references('id')->on('colaboradores');
+            $table->integer('nota_desempenho')->nullable();
         });
     }
 
@@ -31,6 +30,6 @@ class CreateCargoColaboradorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cargo__colaboradors');
+        Schema::dropIfExists('cargo_colaboradors');
     }
 }

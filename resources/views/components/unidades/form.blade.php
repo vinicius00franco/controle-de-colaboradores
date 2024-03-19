@@ -28,7 +28,5 @@
                 @isset($unidade->cnpj) value="{{$unidade->cnpj}}" @endisset>
     </div>
     <button type="submit" class="btn btn-primary">Salvar</button>
-    {{-- <a href="{{ route('unidades.destroy') }}" type="submit" >Deletar</a> --}}
-
 
 </form>

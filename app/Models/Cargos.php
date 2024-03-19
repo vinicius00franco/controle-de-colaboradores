@@ -13,6 +13,7 @@ class Cargos extends Model
 
     public function colaboradores()
     {
-        return $this->belongsToMany(Colaboradores::class, 'cargo_colaborador')->withPivot('nota_desempenho');
+        return $this->belongsToMany(Colaboradores::class, 'cargo_colaborador')
+                    ->withPivot('nota_desempenho');
     }
 }
