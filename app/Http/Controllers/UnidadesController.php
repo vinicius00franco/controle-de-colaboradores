@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Unidades;
+use App\Models\Unidade;
 use Illuminate\Http\Request;
 
 class UnidadesController extends Controller
@@ -14,7 +14,7 @@ class UnidadesController extends Controller
      */
     public function index()
     {
-        $unidades = Unidades::all();
+        $unidades = Unidade::all();
 
         return view('unidades.index')
             ->with('unidades', $unidades);
@@ -39,7 +39,7 @@ class UnidadesController extends Controller
     public function store(Request $request)
     {
 
-        Unidades::create($request->all());
+        Unidade::create($request->all());
 
 
         return redirect()
@@ -57,7 +57,7 @@ class UnidadesController extends Controller
         //
     }
 
-    public function edit(Unidades $unidade)
+    public function edit(Unidade $unidade)
     {
 
         return view('unidades.edit')
@@ -65,7 +65,7 @@ class UnidadesController extends Controller
     }
 
 
-    public function update(Request $request, Unidades $unidade)
+    public function update(Request $request, Unidade $unidade)
     {
         $unidade->update($request->all());
         
@@ -78,7 +78,7 @@ class UnidadesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Unidades $unidade)
+    public function destroy(Unidade $unidade)
     {
         $unidade->delete();
 

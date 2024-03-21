@@ -22,8 +22,8 @@
                         <td>{{ $colaborador->nome }}</td>
                         <td>{{ $colaborador->cpf }}</td>
                         <td>{{ $colaborador->email }}</td>
-                        <td>{{ $colaborador->unidade->nome_fantasia }}</td>
-                        <td>{{ $colaborador->cargo->cargo }}</td>
+                        <td>{{ $colaborador->unidades->nome_fantasia }}</td>
+                        <td>{{ $colaborador->cargos->cargo }}</td>
                         <td>{{ $colaborador->nota_desempenho }}</td>
                         <td>
                             <a href="{{ route('desempenho.edit', $colaborador->id) }}" class="btn btn-sm btn-primary">Editar Desempenho</a>

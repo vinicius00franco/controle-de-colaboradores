@@ -5,14 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Unidades extends Model
+class Unidade extends Model
 {
     use HasFactory;
 
     protected $fillable = ['nome_fantasia', 'razao_social', 'cnpj'];
+    public $timestamps = false; // Desativando os timestamps
 
     public function colaboradores()
     {
-        return $this->hasMany(Colaboradores::class);
+        return $this->belongsTo(Unidade::class);    
     }
 }

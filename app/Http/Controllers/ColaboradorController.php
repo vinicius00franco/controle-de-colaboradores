@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Colaboradores , Unidades , Cargos};
+use App\Models\{Colaboradores , Unidade , Cargo};
 use Illuminate\Http\Request;
 
 class ColaboradorController extends Controller
@@ -10,7 +10,7 @@ class ColaboradorController extends Controller
     public function index()
     {
 
-        dd(Colaboradores::with('unidades', 'cargos')->get());
+        Colaboradores::with('unidades', 'cargos')->get();
 
         $colaboradores = Colaboradores::with('unidades', 'cargos')->get();
         return view('colaboradores.index')
@@ -19,8 +19,8 @@ class ColaboradorController extends Controller
 
     public function create()
     {
-        $unidades = Unidades::all();
-        $cargos = Cargos::all();
+        $unidades = Unidade::all();
+        $cargos = Cargo::all();
         return view('colaboradores.create')
             ->with(['unidades' => $unidades,
                   'cargos' => $cargos
