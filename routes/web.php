@@ -1,6 +1,10 @@
 <?php
 
-use App\Http\Controllers\{ColaboradorController, UnidadesController, DesempenhoController};
+use App\Http\Controllers\{ColaboradorController, 
+                        UnidadesController,
+                         DesempenhoColaboradorController,
+                         DashboardController
+                        };
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,38 +18,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
 Route::resource('/unidades', UnidadesController::class);
-Route::resource('/colaboradores', ColaboradorController::class);
 
-Route::post('/colaboradores/{colaborador}/desempenho', [DesempenhoController::class, 'store'])->name('desempenho.store');
-Route::put('/colaboradores/{colaborador}/desempenho', [DesempenhoController::class, 'update'])->name('desempenho.update');
+Route::get('/colaboradores', [ColaboradorController::class, 'index'])->name('colaboradores.index');
+Route::post('/colaboradores', [ColaboradorController::class, 'store'])->name('colaboradores.store');
+Route::get('/colaboradores/create', [ColaboradorController::class, 'create'])->name('colaboradores.create');
 
-// Route::get('relatorios/colaboradores', 'RelatorioController@colaboradores');
-// Route::get('relatorios/total-colaboradores', 'RelatorioController@totalColaboradores');
-// Route::get('relatorios/ranking-colaboradores', 'RelatorioController@rankingColaboradores');
+Route::get('/colaboradores/search', [ColaboradorController::class, 'show'])->name('colaboradores.show');
 
 
+Route::get('/colaboradores/{colaborador}/edit', [ColaboradorController::class, 'edit'])->name('colaboradores.edit');
+Route::put('/colaboradores/{colaborador}', [ColaboradorController::class, 'update'])->name('colaboradores.update');
+Route::delete('/colaboradores/{colaborador}', [ColaboradorController::class, 'destroy'])->name('colaboradores.destroy');
 
 
-// Route::get('/unidades', [UnidadesController::class, 'index'])->name('unidades.index');
-
-// Route::get('/unidades/criar', [UnidadesController::class, 'create'])->name('unidades.create');
-// Route::post('/unidades/salvar', [UnidadesController::class, 'store'])->name('unidades.store');
-
-// Route::get('/unidades/{unidade}/editar', [UnidadesController::class, 'edit'])->name('unidades.edit');
-
-// Route::put('/unidades/{unidade}', [UnidadesController::class, 'update'])->name('unidades.update');
-// Route::delete('/unidades/{unidade}', [UnidadesController::class, 'destroy'])->name('unidades.destroy');
-
-
-// Route::get('/desempenhos', [DesempenhoController::class, 'index'])->name('desempenho.index');
-
-// Route::get('/desempenhos/criar', [DesempenhoController::class, 'create'])->name('desempenho.create');
-// Route::post('/desempenhos/salvar', [DesempenhoController::class, 'store'])->name('desempenho.store');
-
-// Route::get('/desempenhos/{desempenho}/editar', [DesempenhoController::class, 'edit'])->name('desempenho.edit');
-
-// Route::put('/desempenhos/{desempenho}', [DesempenhoController::class, 'update'])->name('unidades.update');
-// Route::delete('/desempenhos/{unidade}', [DesempenhoController::class, 'destroy'])->name('unidades.destroy');
-
+Route::get('colaboradores/{colaborador}/desempenho', [DesempenhoColaboradorController::class, 'create'])->name('colaboradores.desempenho.create');
+Route::post('colaboradores/{colaborador}/desempenho', [DesempenhoColaboradorController::class,'store'])->name('colaboradores.desempenho.store');
+Route::get('colaboradores/{colaborador}/desempenho/edit', [DesempenhoColaboradorController::class, 'edit'])->name('colaboradores.desempenho.edit');
+Route::put('colaboradores/{colaborador}/desempenho', [DesempenhoColaboradorController::class ,'update'])->name('colaboradores.desempenho.update');
 

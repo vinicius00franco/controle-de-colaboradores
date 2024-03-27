@@ -11,10 +11,16 @@
     <title>Controle de Colaboradoes</title>
 </head>
 <body>
-    <div class="container">
-        <h1>{{ $title }}</h1>
-    
-        {{ $slot }}
-    </div>
+
+    <main class=" p-5">
+        {{-- Adicionando cards --}}
+        <div>
+            <h1>{{ $title }}</h1>
+            {{ $slot }}
+        </div>
+        
+    </main>
+
+
 </body>
 </html>        

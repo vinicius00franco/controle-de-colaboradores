@@ -18,6 +18,7 @@ class CreateUnidadesTable extends Migration
             $table->string('nome_fantasia');
             $table->string('razao_social');
             $table->string('cnpj')->unique();
+            $table->timestamps();
         });
     }
 

@@ -14,8 +14,8 @@ class CreateCargoColaboradoresTable extends Migration
     public function up()
     {
         Schema::create('cargo_colaboradores', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('cargo_id');
+            $table->id(); 
+            $table->unsignedBigInteger('cargo_id')->index();
             $table->unsignedBigInteger('colaboradores_id');
             $table->integer('nota_desempenho')->nullable();
             

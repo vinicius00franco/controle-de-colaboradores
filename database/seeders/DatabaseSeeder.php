@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             UnidadeSeeder::class,
             ColaboradorSeeder::class,
             CargoSeeder::class,
+            CargoColaboradoresSeeder::class,
         ]);
     }
 }
