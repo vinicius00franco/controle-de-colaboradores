@@ -1,9 +1,12 @@
-<x-layout title="Adicionando Desempenho">
+<x-layout title="Adicionando Desempenho do {{ $colaborador->nome }} ">
 
-    <div class="container">
-        <x-unidades.form action=" {{ route('desempnho.store')}}"
-                        :update="true"
-        ></x-unidades.form>
-    </div>
+        <x-desempenhos.cadastro.form action=" {{ route('colaboradores.desempenho.store' , $colaborador->id)}}"
+                        :update="false"
+                        :create="true"
+
+                        :colaborador="$colaborador"
+                        :cargos="$cargos"
+                        >
+        </x-desempenhos.cadastro.form>
 
 </x-layout>

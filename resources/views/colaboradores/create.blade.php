@@ -4,6 +4,8 @@
         <x-colaboradores.form action=" {{ route('colaboradores.store')}}"
          :unidades="$unidades"
          :cargos="$cargos"
+         :update="false"
+         :create="true"
          
          ></x-colaboradores.form>
     </div>

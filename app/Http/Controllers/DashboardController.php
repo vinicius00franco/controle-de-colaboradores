@@ -7,10 +7,12 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        $query = $request->input('query');
 
+        $unidadesTotalRelatorio = Unidade::all();
+
+        $colaboradoresTotalRelatorio = Colaboradores::all();
         //dd($request->all());
 
         // query null
@@ -22,12 +24,16 @@ class DashboardController extends Controller
             ->paginate(6);
 
 
+
         //dd($colaboradores);
 
         return view('dashboard')
             ->with([
                 'unidades' => $unidades,
-                'colaboradores' => $colaboradores
+                'colaboradores' => $colaboradores,
+                'colaboradoresTotalRelatorio' => $colaboradoresTotalRelatorio,
+                'unidadesTotalRelatorio' => $unidadesTotalRelatorio,
+
             ]);
     }
 }

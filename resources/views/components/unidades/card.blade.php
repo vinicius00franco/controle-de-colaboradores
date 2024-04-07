@@ -2,9 +2,11 @@
 
     {{-- card unidades - inicio --}}
 
+    {{ $slot }}
 
-    <a href="{{ route('unidades.create') }}" class="btn btn-primary mb-2">Criar Unidade</a>
-
+    <div class="d-flex flex-column">
+        <a href="{{ route('unidades.create') }}" class="btn btn-success mb-2">Criar Unidade</a>
+    </div>
     <div class="row">
         @foreach ($unidades as $unidade) <!-- Limita a exibição a 4 unidades -->
         <div class="col-12 col-md-6 col-lg-4 col-xl-2">

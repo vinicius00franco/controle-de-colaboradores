@@ -1,20 +1,14 @@
 
-<x-layout title="Editando desempenho {{ $colaborador->nome }}" >
+<x-layout title="Colaborador: {{ $colaborador->nome }} / Desempenho: {{$desempenho}}" >
 
+    <x-desempenhos.cadastro.form action="{{ route('colaboradores.desempenho.update', $colaborador->id) }}"
+                        :update="true"
+                        :create="false"
+                        :desempenho="$desempenho"
+                        :colaborador="$colaborador"
+                        :cargo="$cargo"
+                        >
 
-    @csrf
-
-    @if($update ?? '')
-    @method('PUT')
-    @endisset
-
-    @if(session('success'))
-        <div>{{ session('success') }}</div>
-    @endif
-
-    <x-desempenhos.form action="{{ route('desempenho.update', $colaborador->id) }}"
-                        method="post">
-
-    </x-desempenhos.form>
+    </x-desempenhos.cadastro.form>
 
 </x-layout>

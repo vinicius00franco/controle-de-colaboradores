@@ -29,19 +29,8 @@ class ColaboradorController extends Controller
 
         //dd($request->all());
 
-        $data = $request->validate([
-            'nome' => 'required|string',
-            'email' => 'required|email',
-            'cpf' => 'required|string',
-            'unidade_id' => 'required|exists:unidades,id',
-            'cargo_id' => 'required|exists:cargos,id', // o campo cargo_id é opcional
-        ]);
-    
-        $colaborador = $criandoColaborador->criarColaborador($data);
-    
-        if ($request->filled('cargo_id')) {
-            $colaborador->atribuirCargo($data['cargo_id']);
-        }
+        Colaboradores::create($request->all());
+
     
 
         return redirect()->route('dashboard')
@@ -70,29 +59,19 @@ class ColaboradorController extends Controller
                                 ->paginate(6);
     }
 
+
+    $unidadesTotalRelatorio = Unidade::all();
+
+    $colaboradoresTotalRelatorio = Colaboradores::all();
+
     return view('dashboard')
             ->with([
                 'search' => $search,
                 'colaboradores' => $colaboradores,
                 'unidades' => $unidades,
-            ]);
-    }
 
-
-    public function showAll(Request $request)
-    {
-    // Obtendo todas as unidades sem paginação
-    $unidades = Unidade::orderBy('created_at', 'asc')->paginate(6);
-
-
-    $colaboradores = Colaboradores::orderBy('created_at', 'asc')
-                                ->with('cargos', 'unidades:id')
-                                ->paginate(6);
-
-    return view('dashboard')
-            ->with([
-                'colaboradores' => $colaboradores,
-                'unidades' => $unidades,
+                'colaboradoresTotalRelatorio' => $colaboradoresTotalRelatorio,
+                'unidadesTotalRelatorio' => $unidadesTotalRelatorio,
             ]);
     }
 

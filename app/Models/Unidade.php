@@ -14,6 +14,6 @@ class Unidade extends Model
 
     public function colaboradores()
     {
-        return $this->belongsTo(Unidade::class);    
+        return $this->hasMany(Colaboradores::class);
     }
 }

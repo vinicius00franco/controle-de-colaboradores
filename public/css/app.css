@@ -11965,3 +11965,15 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+/* Arquivo estilos.css */
+/* Cores RGB */
+:root {
+  --cor-primaria: rgb(45, 156, 219); /* Azul */
+  --cor-secundaria: rgb(255, 193, 7); /* Amarelo */
+  --cor-terciaria: rgb(40, 167, 69); /* Verde */
+}
+
+/* Fundo cinza claro */
+body {
+  background-color: #f0f0f0; /* Cinza claro */
+}
