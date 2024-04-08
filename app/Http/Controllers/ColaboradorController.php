@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ColaboradorRequest;
 use App\Models\{Colaboradores , Unidade , Cargo};
 use App\Services\ColaboradorService;
 use Illuminate\Http\Request;
@@ -24,7 +25,7 @@ class ColaboradorController extends Controller
                 ]);
     }
 
-    public function store(Request $request, ColaboradorService $criandoColaborador)
+    public function store(ColaboradorRequest $request)
     {
 
         //dd($request->all());

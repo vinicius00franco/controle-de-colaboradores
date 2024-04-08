@@ -1,15 +1,12 @@
 <form action="{{ $action }}" method="POST" class="m-1">
 
-{{-- 
-    {{ dd($colaborador->cargos);  }}
-    {{ exit();  }} --}}
-
-
     @csrf
 
     @if($update )
     @method('PUT')
     @endif
+
+
 
     <div class="form-group">
         <label for="nome">Nome</label>
