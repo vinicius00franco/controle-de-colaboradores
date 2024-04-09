@@ -16,18 +16,37 @@ class ColaboradorSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create();
-        $total = max(10, Colaboradores::count() + 1); // Garantindo que tenhamos pelo menos 100 registros
-        $unidadesIds = Unidade::pluck('id')->toArray();
-        for ($i = 1; $i <= $total; $i++) {
-            $created_at = $faker->dateTimeBetween('-1 year', 'now'); // Data de criação aleatória nos últimos 1 ano
-            Colaboradores::create([
-                'nome' => $faker->name,
-                'cpf' => $faker->unique()->numerify('############'),
-                'email' => $faker->unique()->email,
-                'unidade_id' => $faker->randomElement($unidadesIds),
-                'created_at' => $created_at,
-                'updated_at' => $created_at 
-            ]);
+        $totalColaboradores = 0; 
+
+        foreach (Unidade::all() as $unidade) {
+            if ($totalColaboradores >= 500) {
+                break; // Sai do loop se já atingimos ou ultrapassamos 500 colaboradores
+            }
+
+            // Defina um número aleatório de colaboradores entre 1 e 50 ou o máximo restante até 500
+            $numColaboradores = min(rand(1, 50), 500 - $totalColaboradores);
+            
+            // Crie colaboradores para a unidade atual
+            for ($i = 0; $i < $numColaboradores; $i++) {
+                try {
+                    Colaboradores::create([
+                        'nome' => $faker->name,
+                        'cpf' => $faker->unique()->numerify('###########'),
+                        'email' => $faker->unique()->safeEmail,
+                        'unidade_id' => $unidade->id,
+                    ]);
+                    $totalColaboradores++;
+                } catch (\Illuminate\Database\QueryException $e) {
+                    // Lidar com exceção de violação de restrição de chave única
+                    if ($e->getCode() == '23000') {
+                        continue; 
+                    } else {
+                        throw $e; 
+                    }
+                }
+            }
         }
     }
+    
+    
 }

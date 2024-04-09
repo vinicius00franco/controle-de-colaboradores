@@ -17,8 +17,8 @@ class UnidadeSeeder extends Seeder
     {
         
         $faker = Faker::create();
-        for ($i = 0; $i < 10; $i++) {
-            $created_at = $faker->dateTimeBetween('-1 year', 'now'); // Data de criação aleatória nos últimos 1 ano
+        for ($i = 0; $i < 100; $i++) {
+            $created_at = $faker->dateTimeBetween('-1 year', 'now');
 
             Unidade::create([
                 'nome_fantasia' => $faker->company,
