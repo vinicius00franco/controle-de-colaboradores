@@ -2,7 +2,7 @@
 
     {{-- card colaboradores - inic  io --}}
     
-
+    {{ $slot }}
 
     <div class="row ">
 
